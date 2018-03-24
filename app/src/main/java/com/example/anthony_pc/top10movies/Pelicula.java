@@ -14,14 +14,14 @@ public class Pelicula {
     private String titulo;
     private String metascore;
     private Float rate;
-    //private Drawable image;
+    private Drawable image;
 
     public Pelicula(int id, String titulo, String metascore, Float rate, Drawable image) {
         this.id = id;
         this.titulo = titulo;
         this.metascore = metascore;
         this.rate = rate;
-        //this.image = image;
+        this.image = image;
     }
 
     public int getId() {
@@ -56,11 +56,11 @@ public class Pelicula {
         this.rate = rate;
     }
 
-//    public Drawable getImage() {
-//        return image;
-//    }
-//
-//    public void setImage(Drawable image) {
-//        this.image = image;
-//    }
+    public Drawable getImage() {
+        return image;
+    }
+
+    public void setImage(Drawable image) {
+        this.image = image;
+    }
 }

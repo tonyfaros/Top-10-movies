@@ -1,5 +1,6 @@
 package com.example.anthony_pc.top10movies;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,27 +45,49 @@ public class GridAdapter extends BaseAdapter{
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        if(context == null){
-            LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            view = layoutInflater.inflate(R.layout.grid_item,null);
+        View row = view;
+        TextView title;
+        TextView metascore;
+        ImageView imgView;
+        RatingBar ratingBar;
+        LayoutInflater layoutInflater = (LayoutInflater) context
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+                //((Activity) context).getLayoutInflater();
+
+        if(row == null){
+            //row = new View(context);
+
+
+            row = layoutInflater.inflate(R.layout.grid_item,null);
+            System.out.println(peliculaArray.get(i).getMetascore());
+
+            title = (TextView) row.findViewById(R.id.txtTitulo);
+            title.setText(peliculaArray.get(i).getTitulo());
+            metascore = (TextView) row.findViewById(R.id.txtMetascore);
+            metascore.setText(peliculaArray.get(i).getMetascore());
+            imgView = (ImageView) row.findViewById(R.id.imgView);
+            imgView.setImageDrawable(peliculaArray.get(i).getImage());
+            ratingBar = (RatingBar) row.findViewById(R.id.ratingBar);
+            ratingBar.setRating(peliculaArray.get(i).getRate());
+
         }
-
-        System.out.println(peliculaArray.get(i).getTitulo());
-        System.out.println(peliculaArray.get(i).getMetascore());
-        System.out.println(peliculaArray.get(i).getRate());
-        System.out.println(peliculaArray.get(i).getId());
-
-        TextView title = (TextView) view.findViewById(R.id.txtTitulo);
-        title.setText("sadfasdf");
-        System.out.println("JEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-        TextView metascore = (TextView) view.findViewById(R.id.txtMetascore);
-        metascore.setText(peliculaArray.get(i).getMetascore());
-        ImageView imgView = (ImageView) view.findViewById(R.id.imgView);
-        //imgView.setImageDrawable(peliculaArray.get(i).getImage());
-        RatingBar ratingBar = (RatingBar) view.findViewById(R.id.rating);
-        ratingBar.setRating(peliculaArray.get(i).getRate());
+//        System.out.println(peliculaArray.get(i).getTitulo());
+//        System.out.println(peliculaArray.get(i).getMetascore());
+//        System.out.println(peliculaArray.get(i).getRate());
+//        System.out.println(peliculaArray.get(i).getId());
 
 
-        return view;
+//        title.setText("sadfasdf");
+//        System.out.println("JEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+//        TextView metascore = (TextView) view.findViewById(R.id.txtMetascore);
+//        metascore.setText(peliculaArray.get(i).getMetascore());
+//        ImageView imgView = (ImageView) view.findViewById(R.id.imgView);
+//        //imgView.setImageDrawable(peliculaArray.get(i).getImage());
+//        RatingBar ratingBar = (RatingBar) view.findViewById(R.id.rating);
+//        ratingBar.setRating(peliculaArray.get(i).getRate());
+
+
+        return row;
     }
 }

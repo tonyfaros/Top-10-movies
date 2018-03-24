@@ -75,10 +75,6 @@ public class MainActivity extends AppCompatActivity {
 
                 System.out.println(arrayPelicula.size());
 
-
-
-                //ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.ListView,R.id.textView,StringArray);
-
             } catch (Exception e) {
                 this.exception = e;
 

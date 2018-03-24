@@ -19,7 +19,9 @@
             android:layout_centerVertical="true"
             android:columnWidth="70dp"
             android:numColumns="auto_fit"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:padding="5dp"
+            android:layout_margin="5dp"/>
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
