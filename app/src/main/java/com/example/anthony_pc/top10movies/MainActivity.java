@@ -6,6 +6,7 @@ import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.GridView;
 
 import org.jsoup.Jsoup;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         gridView = findViewById(R.id.gridView);
+        findViewById(R.id.loadingPanel).setVisibility(View.VISIBLE);
 
         new readHTML().execute("http://www.imdb.com/list/ls064079588/");
 
@@ -73,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
 
+            findViewById(R.id.loadingPanel).setVisibility(View.GONE);
             gridAdapter = new GridAdapter(getApplicationContext(),arrayPelicula);
 
             gridView.setAdapter(gridAdapter);
