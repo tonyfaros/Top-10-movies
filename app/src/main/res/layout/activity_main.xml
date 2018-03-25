@@ -17,11 +17,10 @@
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
+            android:clickable="false"
             android:columnWidth="70dp"
-            android:numColumns="auto_fit"
             android:gravity="center"
-            android:padding="5dp"
-            android:layout_margin="5dp"/>
+            android:numColumns="3"/>
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

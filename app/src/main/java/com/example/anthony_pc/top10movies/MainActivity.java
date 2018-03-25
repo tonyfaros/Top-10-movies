@@ -37,24 +37,17 @@ public class MainActivity extends AppCompatActivity {
 
     class readHTML extends AsyncTask<String, Void, Void> {
 
-        private Exception exception;
-
         protected Void doInBackground(String... urls) {
             try {
-                URL url = new URL(urls[0]);
                 Document doc = Jsoup.connect("http://www.imdb.com/list/ls064079588/").get();
-
                 Elements imagenes = doc.select("div.lister-item.mode-detail div.lister-item-image.ribbonize a img");
 
-                String link = imagenes.attr("loadlate");
-                //Log.i("titulo", doc.title());
+
                 Elements titulos = doc.select("div.lister-item-content h3.lister-item-header a");
                 Elements estrellas = doc.select("div.lister-item-content div.ratings-bar div.inline-block.ratings-imdb-rating strong");
-                //Log.i("estrellas", estrellas.html());
+
                 Elements metascores = doc.select("div.lister-item-content div.ratings-bar div.inline-block.ratings-metascore span.metascore");
-                //Log.i("metascores", metascores.html());
-                //Log.i("imagenes", imagenes.html().toString());
-                //Log.i("titulos", titulos.html());
+
 
                 for(int i=0;i<20;i++)
                 {
@@ -63,20 +56,15 @@ public class MainActivity extends AppCompatActivity {
                     Drawable d = Drawable.createFromStream(is, "");
 
                     Pelicula pelicula = new Pelicula(i,titulos.get(i).html(),metascores.get(i).html(),
-                            Float.valueOf(estrellas.get(i).html()),d);
-
-                    //System.out.println(imagenes.get(i).attr("loadlate"));
-                    //System.out.println(metascores.get(i).html());
-//                    System.out.println(titulos.get(i).html());
-//                    System.out.println(estrellas.get(i).html());
+                            estrellas.get(i).html(),d);
                     arrayPelicula.add(pelicula);
 
                 }
 
-                System.out.println(arrayPelicula.size());
+
 
             } catch (Exception e) {
-                this.exception = e;
+                e.printStackTrace();
 
             }
             return null;
